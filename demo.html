@@ -1,0 +1,107 @@
+<html>
+
+	<head>
+		<meta charset="UTF-8" />
+		<title></title>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>基于Three.js的360度全景图片</title>
+		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="css/default.css">
+		<script src="js/three.min.js"></script>
+		<script src="js/photo-sphere-viewer.min.js"></script>
+		
+		<style>
+			body{ text-align:center} 
+			.container {
+			    margin:0 auto;
+			}
+			.pano {
+			    margin:0 auto;
+			    z-index:1;
+			}
+			.description {
+			    width:360px;
+			     position:absolute;
+			    left:50%;
+			    margin-left: -180px;
+			    margin-top:40px;
+			    z-index:100;
+			   
+			}
+			.description h1 {
+			    font-size:40px;
+			    color:#FFF
+			}
+			.description p {
+			    font-size:22px;
+			    color:#FFF
+			}
+			@media only screen and (max-width: 768px) {
+					.description {
+						position:absolute;
+				    width:300px;
+				    left: 50%px;
+				    margin-left: -160px;
+				    margin-top:40px;
+				    z-index:100;
+				    
+				}
+				.description h1{
+					font-size: 18px;
+				}
+				.description p {
+				    font-size:16px;
+				    color:#FFF
+				}
+			}
+			@media only screen and (max-width: 640px) {
+					canvas{
+						height: 500px !important;
+					}
+					.pano > div{
+						height: 500px !important; 
+					}
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="container">
+			<div class="description">
+				<h1>陶者</h1>
+				<p>陶尽门前土，屋上无片瓦。</p>
+				<p>十指不沾泥，鳞鳞居大厦。</p>
+			</div>
+			<div id="my-pano" class="pano"></div>
+		</div>
+	</body>
+	<script>
+		window.onload = function() {
+			var div = document.getElementById('my-pano');
+			var PSV = new PhotoSphereViewer({
+				// Panorama, given in base 64
+				panorama: 'img/55b7000ad62f1.jpg',
+
+				// Container
+				container: div,
+
+				autoload: true,
+
+				// Deactivate the animation
+				time_anim: 2000,
+
+				// Display the navigation bar
+				navbar: true,
+
+				// Resize the panorama
+				size: {
+					width: '90%',
+					height: 700
+				}
+			});
+		};
+	</script>
+
+</html>
